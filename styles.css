@@ -1,5 +1,5 @@
-* {color: #e69e00;}
+* {font: 900 6vmin sans-serif; color: #e69e00;}
 
-body {background-color: #000000; background-image: url('Images/gif.gif'); background-size: cover; height: 100vh; overflow: hidden;}
+body {background-color: #000000; background-image: url('Images/gif.gif'); background-size: cover; overflow: hidden; height: 100vh;}
 
-div{position: absolute; transform: translate(-50%, -50%); justify-content: center; align-items: center; height: 50vmin; width: 50vmin; left: 50%; top: 50%; font-family: sans-serif; font-weight: 900; font-size: 6vmin; text-align: center; vertical-align: middle; display: flex; margin: 0; padding: 0; gap: 15%;}
+div {position: absolute; transform: translate(-50%, -50%); justify-content: center; align-items: center; display: flex; left: 50%; top: 50%; gap: 15%;}
