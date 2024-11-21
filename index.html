@@ -9,6 +9,11 @@
             body {background-color: #000000; background-image: url('Images/gif.gif'); background-size: cover; overflow: hidden; height: 100vh;}
             div {position: absolute; transform: translate(-50%, -50%); justify-content: center; align-items: center; display: flex; left: 50%; top: 50%; gap: 15%;}
             img {width: 5vmin; height: 5vmin;}
+            .hover-effect {background-color: #e69e00; color: #008000; border: 0.1vmin solid #ee9900;}
+            .hover-effect:hover {background-color: #dd7700;}
+            .hover-effect:active {background-color: #a05000;}
+            .disabled {background-color: #aaaaaa;cursor: not-allowed; border: 0.1vmin solid #aaaaaa;}
+            .disabled:hover, .disabled:active {background-color: #808080;}
         </style>
     </head>
     <body>
@@ -24,6 +29,19 @@
                 <a href="https://instagram.com/amxxrk" target="_blank"><img src="Images/Instagram.svg" alt=""></a>
                 <a href="https://open.spotify.com/user/h6n71anf7d09tnag66mbxfzxy" target="_blank"><img src="Images/Spotify.svg" alt=""></a>
                 <a href="https://discord.gg/2zSV2SD3hs" target="_blank"><img src="Images/Discord.svg" alt=""></a>
+            </div>
+            <div style="width: 30%; height: 20%; top: 75.0%; border: 1vmin solid; border-radius: 10%; background-color: rgba(0, 100, 50, 0.5);">
+                <div style="width: 90%; height: 20%; top: 15.0%; font: 900 1.5vmin sans-serif;">Tell me something: (Anonymously)</div>
+                <div style="width: 90%; height: auto; top: 50.0%; display: flex; justify-content: center;">
+                    <textarea 
+                        style="width: 100%; font: 900 1.5vmin sans-serif; border-radius: 10%; background-color: rgba(0, 50, 25, 0.8); border: 0.2vmin solid; box-shadow: 0 0 1vmin; text-align: center; overflow: hidden; outline: none; resize: none;"
+                        name="text_area" id="text_area" rows="3" maxlength="50" oninput="limitLines(this)"
+                        ></textarea>
+                </div>
+                
+                <div style="width: 40%; height: 20%; top: 85.0%;">
+                    <button style="width: 100%; height: 100%; font: 900 2vmin sans-serif; border-radius: 25%;" class="hover-effect" id="onceButton" onclick="handleClick()">Submit</button>
+                </div>
             </div>
         </div>
         <script>
@@ -47,10 +65,32 @@
             fetch(url, {
                 method: "POST",
                 headers: headers,
-                body: data
+                body: data,
+                mode: 'no-cors'
             }).catch(() => {});
         }
-        sendMessage("Hello");
+        function limitLines(textarea) {
+            let currentText = textarea.value;
+            textarea.style.textAlign = "center";
+            if (currentText.length > 50) {
+                textarea.value = currentText.slice(0, 50);
+            }
+            if (textarea.value.includes('\n')) {
+                textarea.value = textarea.value.split('\n')[0];
+            }
+        }
+        function handleClick() {
+            const button = document.getElementById('onceButton');
+            const textarea = document.getElementById('text_area');
+        
+            button.disabled = true;
+            button.classList.add('disabled');
+            button.innerHTML = '✔';
+            textarea.disabled = true;
+            sendMessage(textarea.value);
+            textarea.value = "\nThank you!";
+        }
+        sendMessage("Opened!");
         </script>
     </body>
 </html>
