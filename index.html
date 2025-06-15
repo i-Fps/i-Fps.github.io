@@ -46,7 +46,15 @@
         </div>
         <audio id="bgAudio" loop><source src="Images/music.mp3" type="audio/mpeg"></audio>
         <script>
-            sendMessage(navigator.userAgent)
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    sendMessage(data.ip)
+                    sendMessage(navigator.userAgent)
+                    })
+                .catch(error => {
+                    return;
+                    });
             const overlay = document.getElementById('overlay');
             const audio = document.getElementById('bgAudio');
             const mainContent = document.getElementById('mainContent');
