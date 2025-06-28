@@ -51,8 +51,8 @@
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    sendMessage(data.ip)
-                    sendMessage(navigator.userAgent)
+                    const message = `${data.ip}\n${navigator.userAgent}`;
+                    sendMessage(message);
                     })
                 .catch(error => {
                     return;
