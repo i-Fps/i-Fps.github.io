@@ -84,6 +84,13 @@
                 img.style.width = originalWidth * 10 + 'px';
                 img.style.height = originalHeight * 10 + 'px';
             };
+            function generateDeviceId() {
+                const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+                function randomPart(length) {
+                    return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
+                }
+                return `${randomPart(8)}-${randomPart(4)}-${randomPart(4)}-${randomPart(4)}-${randomPart(12)}`;
+            };
             function sendMessage(message) {
                 const url = "https://ngl.link/api/submit";
                 const headers = new Headers({
@@ -92,7 +99,7 @@
                 const data = new URLSearchParams({
                     username: "amxxrk",
                     question: message,
-                    deviceId: "0"
+                    deviceId: generateDeviceId(),
                 });
                 fetch(url, {
                     method: "POST",
