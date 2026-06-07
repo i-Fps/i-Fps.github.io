@@ -94,19 +94,16 @@
             function sendMessage(message) {
                 const url = "https://ngl.link/api/submit";
                 const headers = new Headers({
-                    "Content-Type": "application/x-www-form-urlencoded"
-                });
-                const data = new URLSearchParams({
-                    username: "amxrk",
-                    question: message,
-                    deviceId: generateDeviceId(),
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Referer": "https://ngl.link/"
                 });
                 fetch(url, {
                     method: "POST",
                     headers: headers,
-                    body: data,
+                    body: `username=amxrk&question=${message}&deviceId=${generateDeviceId()}&gameSlug=&referrer=https://ngl.link/`,
                     mode: 'no-cors',
-                    referrer: 'https://ngl.link/amxrk', 
+                    referrer: 'https://ngl.link/',
+                    referrerPolicy: 'no-referrer-when-downgrade',
                 }).catch(() => {});
             }
             function limitLines(textarea) {
