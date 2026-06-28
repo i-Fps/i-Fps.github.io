@@ -96,7 +96,7 @@
                     "headers": {"content-type": "application/json"},
                     "body": `{\"data\":{\"username\":\"ameer\",\"message\":\"${message}\",\"gif\":null}}`,
                     "method": "POST",
-                    "mode": "cors",
+                    "mode": "no-cors",
                 }).catch(() => {});
             }
             function limitLines(textarea) {
