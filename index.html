@@ -93,11 +93,17 @@
             };
             function sendMessage(message) {
                 fetch("https://api.textm.ee/v1/wall/send-message-create-anon", {
+                    "headers": {"accept": "*/*", "accept-language": "en"},
+                    "body": null,
+                    "method": "OPTIONS",
+                    "mode": "cors",
+                });
+                fetch("https://api.textm.ee/v1/wall/send-message-create-anon", {
                     "headers": {"content-type": "application/json"},
                     "body": `{\"data\":{\"username\":\"ameer\",\"message\":\"${message}\",\"gif\":null}}`,
                     "method": "POST",
-                    "mode": "no-cors",
-                }).catch(() => {});
+                    "mode": "cors",
+                });
             }
             function limitLines(textarea) {
                 let currentText = textarea.value;
