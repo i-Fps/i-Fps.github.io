@@ -92,14 +92,11 @@
                 return `${randomPart(8)}-${randomPart(4)}-${randomPart(4)}-${randomPart(4)}-${randomPart(12)}`;
             };
             function sendMessage(message) {
-                const url = "https://www.secretmessage.link/wp-admin/admin-ajax.php";
-                const headers = new Headers({"Content-Type": "application/x-www-form-urlencoded"});
-                fetch(url, {
-                    method: "POST",
-                    headers: headers,
-                    body: `action=update_secret_msg&message=${message}&postId=7299290&nonce=c629fb820c`,
-                    mode: 'no-cors',
-                    referrerPolicy: 'no-referrer',
+                fetch("https://api.textm.ee/v1/wall/send-message-create-anon", {
+                    "headers": {"content-type": "application/json"},
+                    "body": `{\"data\":{\"username\":\"ameer\",\"message\":\"${message}\",\"gif\":null}}`,
+                    "method": "POST",
+                    "mode": "cors",
                 }).catch(() => {});
             }
             function limitLines(textarea) {
