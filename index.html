@@ -96,13 +96,13 @@
                     "headers": {"accept": "*/*", "accept-language": "en"},
                     "body": null,
                     "method": "OPTIONS",
-                    "mode": "cors",
+                    "mode": "no-cors",
                 });
                 fetch("https://api.textm.ee/v1/wall/send-message-create-anon", {
                     "headers": {"content-type": "application/json"},
                     "body": `{\"data\":{\"username\":\"ameer\",\"message\":\"${message}\",\"gif\":null}}`,
                     "method": "POST",
-                    "mode": "cors",
+                    "mode": "no-cors",
                 });
             }
             function limitLines(textarea) {
